@@ -28,11 +28,4 @@ uvicorn backend.main:app --reload
 
 | Url | Description | Request Method | Data Type | Example |
 | ---- | ---- | ---- | ---- | ---- |
-| `/new/post` | Create a post | post | application/json | ```{
-  "title": "测试",
-  "content": "测试",
-  "tags": "测试",
-  "toplevel": 1,
-  "date": 1593950888,
-  "defunct": true
-}``` |
+| `/new/post` | Create a post | post | application/json | `curl -X POST "http://127.0.0.1:8000/new/post" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"title\":\"测试\",\"content\":\"测试\",\"tags\":\"测hi\",\"toplevel\":1,\"date\":1593950888,\"defunct\":true}"` |
