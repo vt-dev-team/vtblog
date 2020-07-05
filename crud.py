@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Session
-import time
 from . import models, schemas
 
 def get_post(db: Session, post_id: int):
@@ -8,5 +7,9 @@ def get_post(db: Session, post_id: int):
 def get_posts(db: Session, skip: int = 0, limit: int = 20):
     return db.query(models.Post).offset(skip).limit(limit).all()
 
-def create_user(db: Session, post: schemas.PostCreate):
-    db_post = models.Post(title=post.title, content=post.content, tags=post.tags, toplevel=post.toplevel, date=(int)(time.time()), defunct=post.defunct)
+def create_post(db: Session, post: schemas.PostCreate):
+    db_post = models.Post(title=post.title, content=post.content, tags=post.tags, toplevel=post.toplevel, date=post.date, defunct=post.defunct)
+    db.add(db_post)
+    db.commit()
+    db.refresh(db_post)
+    return db_post

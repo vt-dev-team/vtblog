@@ -14,13 +14,9 @@ def get_db():
         yield db
     finally:
         db.close()
-
-@app.get("/")
-def root():
-    return {"message": "Hello World"}
 @app.post("/new/post", response_model =schemas.Post)
 def create_post(post: schemas.PostCreate, db: Session = Depends(get_db)):
-    return crud.create_user(db=db, post = post)
+    return crud.create_post(db=db, post = post)
 @app.get("/post/{post_id}", response_model=schemas.Post)
 def get_post(post_id: int, db: Session = Depends(get_db)):
     db_post = crud.get_post(db, post_id = post_id)
