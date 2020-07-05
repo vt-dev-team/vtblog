@@ -1,2 +1,2 @@
-__pycache__
-sql.db
+backend/__pycache__
+backend/sql.db

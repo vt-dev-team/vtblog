@@ -20,5 +20,19 @@ git clone https://github.com/vt-dev-team/vtblog
 ### 3. Start Backend
 
 ```
-uvicorn vtblog.main:app --reload
+cd vtblog
+uvicorn backend.main:app --reload
 ```
+
+## Interface
+
+| Url | Description | Request Method | Data Type | Example |
+| ---- | ---- | ---- | ---- | ---- |
+| `/new/post` | Create a post | post | application/json | ```{
+  "title": "测试",
+  "content": "测试",
+  "tags": "测试",
+  "toplevel": 1,
+  "date": 1593950888,
+  "defunct": true
+}``` |
